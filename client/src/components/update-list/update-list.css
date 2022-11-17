@@ -1,0 +1,8 @@
+.update-list__container {
+  width: 30%;
+  border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  padding: 12px;
+  margin-left: 12px; 
+  overflow-y: auto;
+}

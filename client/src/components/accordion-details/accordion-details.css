@@ -1,0 +1,40 @@
+.details__info {
+  display: flex;
+  align-items: center;
+}
+
+.details__progress {
+  width: 50px;
+  height: 30px;
+  color: #c1c1c1;
+  border: 1px solid #c1c1c1;
+  font-weight: 400;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px;
+}
+
+.details__action {
+  display: flex;
+  align-items: center;
+}
+
+
+.details__find-task {
+  fill: rgba(0,0,0, 0.54) !important;
+  width: 30px;
+  height: 30px;
+}
+
+.details__avatar {
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f8f8f8 !important;
+  border: 1px solid #c1c1c1;
+}
+
+.details__refresh {
+  fill: rgba(0,0,0, 0.54) !important;
+}

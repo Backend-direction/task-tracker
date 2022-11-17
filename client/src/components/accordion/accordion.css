@@ -1,0 +1,12 @@
+.progress {
+  width: 50px;
+  height: 30px;
+  background-color: red;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 400;
+  border-radius: 8px;
+}

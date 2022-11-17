@@ -1,0 +1,15 @@
+li {
+  border-left: 4px solid transparent;
+}
+
+.active li {
+  border-left: 4px solid #f34d3d;
+}
+
+.active .MuiSvgIcon-root {
+  fill: #f34d3d !important;
+}
+
+.MuiSvgIcon-root {
+  fill: white !important;
+}
