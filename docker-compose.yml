@@ -28,7 +28,8 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
-      - ./pgdata:/var/lib/postgresql/data/
+      - ./pgdata:/var/lib/postgresql/data/ #windows
+      # - /media/dataDemo/db:/var/lib/postgresql/data:z #linux
     
   client:
     stdin_open: true
