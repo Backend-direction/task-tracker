@@ -13,8 +13,6 @@ import useRequest from '../../hooks/use-request';
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
-const managers = ['MacGonegel', 'Sirius Sneip'];
-
 const Alert = React.forwardRef(function Alert(
   props,
   ref,
@@ -71,7 +69,6 @@ export default function CreateProjectDialog({ open, handleClose, addProject }) {
 
   return (
     <>
-    
       <Dialog open={open} onClose={handleClose}>
         <FormProvider {...methods}>
           <form
@@ -105,17 +102,19 @@ export default function CreateProjectDialog({ open, handleClose, addProject }) {
               /> 
 
               <FormAutocomplete
-                label={"Assigne PO*"}
                 name="productOwner"
-                options={managers}
+                label={"Assigne PO*"}
+                getOptionLabel={(option) => (`${option.user.name} ${option.user.surname}`)}
                 rules={{ required: "Required" }}
+                url='/api/v1/owners'
               />
 
               <FormAutocomplete
-                label={"Assigne team*"}
                 name="team"
-                options={managers}
+                label={"Assigne team*"}
+                getOptionLabel={(option) => option.name}
                 rules={{ required: "Required" }}
+                url='/api/v1/teams'
               />
             </DialogContent>
 

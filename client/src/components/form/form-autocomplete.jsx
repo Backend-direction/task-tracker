@@ -1,13 +1,13 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import TextField from '@mui/material/TextField';
-import AutocompleteMui from '@mui/material/Autocomplete'
+import Autocomplete from "../autocomplete/autocomplete";
 
 export const FormAutocomplete = ({ 
   name,
   rules,
-  options,
   getOptionLabel,
+  label,
+  url,
   ...rest
  }) => {
   const { control } = useFormContext();
@@ -22,26 +22,13 @@ export const FormAutocomplete = ({
         field: { ref, ...field },
         fieldState: { error, invalid }
       }) => (
-        <AutocompleteMui
-          {...field}
-          freeSolo
-          handleHomeEndKeys
-          options={options}
+        <Autocomplete  
+          field={field}
           getOptionLabel={getOptionLabel}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              {...rest}
-              inputRef={ref}
-              error={invalid}
-              helperText={error?.message}
-            />
-          )}
-          sx={{ width: '100%', mt: 3 }}
-          onChange={(e, value) => field.onChange(value)}
-          onInputChange={(_, data) => {
-            if (data) field.onChange(data);
-          }}
+          label={label}
+          error={error}
+          invalid={invalid}
+          url={url}
         />
       )}
     />
