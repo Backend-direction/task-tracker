@@ -6,6 +6,7 @@ import ErrorPage from "../components/error-page/error-page";
 
 import Dashboard, { loader as dashboardLoader} from './dashboard';
 import Projects, { loader as projectsLoader } from './projects';
+import Project from './project';
 import Settings from './settings';
 import Upgrade from './upgrade';
 import Logout from './logout'
@@ -26,6 +27,21 @@ export const router = createBrowserRouter([
         path: 'projects',
         element: <Projects />,
         loader: projectsLoader,
+        errorElement: <div>Oops! There was an error.</div>,
+      },
+      {
+        path: 'projects/:project_id',
+        element: <Project />,
+        errorElement: <div>Oops! There was an error.</div>,
+      },
+      {
+        path: 'projects/:project_id/:story_id',
+        element: <Project />,
+        errorElement: <div>Oops! There was an error.</div>,
+      },
+      {
+        path: 'projects/:project_id/:story_id/:task_id',
+        element: <Project />,
         errorElement: <div>Oops! There was an error.</div>,
       },
       {

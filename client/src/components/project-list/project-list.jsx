@@ -22,7 +22,9 @@ export default function ProjectList ({ projects, handleClickOpen }) {
     return projects.map((project, index) => {
         return (
           <Grid item xs={3} sm={4} md={4} key={index}>
-            <ProjectCard project={project} />
+            <ProjectCard 
+              project={project}
+            />
           </Grid>
         )
       })
