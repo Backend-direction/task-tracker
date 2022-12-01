@@ -62,7 +62,7 @@ export default function Project () {
   const [project, saveProject] = useState(useLoaderData());
   console.log('pr', project)
   return (
-    <Container>
+    <Container maxWidth='false'>
       <Box
         sx={{
           display: 'flex',

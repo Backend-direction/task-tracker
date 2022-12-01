@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import MiniDrawer from '../components/drawer/drawer';
 import AppBar from '../components/app-bar/app-bar';
+import { Container } from '@mui/material';
 
 export default function Root() {
   const [open, setOpen] = useState(false);
@@ -23,9 +24,9 @@ export default function Root() {
       <CssBaseline />
       <AppBar handleDrawerOpen={handleDrawerOpen} open={open}/>
       <MiniDrawer drawerState={open} handleDrawerClose={handleDrawerClose} />
-      <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: '64px' }}>
+      <Container component="main" maxWidth='false' sx={{ p: 3, marginTop: '64px' }}>
         <Outlet />
-      </Box>
+      </Container>
     </Box>
   );
 }
