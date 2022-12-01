@@ -6,6 +6,7 @@ import {
   Avatar,
   Paper,
   Grid,
+  Typography,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import buildClient from '../api/buildClient';
@@ -52,10 +53,13 @@ export async function loader() {
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  display: 'flex',
+  alignItems: 'center',
+  minWidth: '345px',
+  height: '56px',
 }));
 
 export default function Project () {
@@ -63,90 +67,74 @@ export default function Project () {
   console.log('pr', project)
   return (
     <Container maxWidth='false'>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginBottom: '50px',
-        }}
+      <Grid
+        wrap='wrap'
+        container
+        spacing={{ xs: 2, md: 3, lg: 4 }}
+        sx={{ justifyContent: 'center' }}
       >
-        <Grid container spacing={2}>
+        <Grid item mb={5}>
+          <img
+            src={`/api/${project.image}`}
+            srcSet={`/api/${project.image}`}
+            width="200"
+            alt={project.name}
+            loading="lazy"
+          />
+        </Grid>
+
+        <Grid 
+          container 
+          item 
+          spacing={{ xs: 2, md: 3, lg: 4 }}
+          columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}
+          my={5}
+          wrap='wrap'
+        >
           <Grid 
-            item 
-            xs={4}
-            sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column'}}
+            item xs={12} sm={12} md={12} lg={6} xl={4}
           >
             <Item>
-             Project title:
+              <Typography variant="h6" pr={2}>
+                Project title:
+              </Typography>
+              <Typography pr={2}>
+                {project.name} 
+              </Typography> 
             </Item>
-          </Grid>
-          <Grid 
-            item 
-            xs={8}             
-            sx={{
-              display: 'flex',
-              flexDirection: 'row-reverse',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-            }}
-          >
-            {project.name}
           </Grid>
 
           <Grid 
-            item 
-            xs={4} 
-            sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column'}}
+           item xs={12} sm={12} md={12} lg={6} xl={4}
           >
             <Item>
-              Product owner:
+              <Typography variant="h6" pr={2}>
+                Product owner: 
+              </Typography>  
+              <Typography pr={2}>
+                {project.product_owner}  
+              </Typography>         
+              <Avatar alt="Remy Sharp" sx={{ marginRight: '15px' }} src={`api/v1/${project.product_owner}`} />        
             </Item>
           </Grid>
-          <Grid 
-            item
-            xs={8}
-            sx={{
-              display: 'flex',
-              flexDirection: 'row-reverse',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-            }}
-          >
-              {project.product_owner}
-              <Avatar alt="Remy Sharp" sx={{ marginRight: '15px' }} src={`api/v1/${project.product_owner}`} />
-          </Grid>
+   
 
           <Grid 
-            item 
-            xs={4}
-            sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column'}}
+            item xs={12} sm={12} md={12} lg={6} xl={4}
           >
             <Item>
-              Team:
-            </Item>
-          </Grid>
-          <Grid 
-            item
-            xs={8}
-            sx={{
-              display: 'flex',
-              flexDirection: 'row-reverse',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-            }}
-          >
-              {project.team}
+              <Typography variant="h6" pr={2}>
+                Team:
+              </Typography>
+              <Typography pr={2}>
+                {project.team}
+              </Typography>
               <Avatar alt="Remy Sharp" sx={{ marginRight: '15px' }} src={`api/v1/${project.team_photo}`} />
+            </Item>
           </Grid>
         </Grid>
-        <img
-          src={`/api/${project.image}`}
-          srcSet={`/api/${project.image}`}
-          width="200"
-          alt={project.name}
-          loading="lazy"
-        />
-      </Box>
+
+      </Grid>
 
       <ProjectInfoTable />
     </Container >

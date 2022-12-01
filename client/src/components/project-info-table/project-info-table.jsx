@@ -122,24 +122,27 @@ const rows = [
 
 export default function ProjectInfoTable() {
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Title</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Assigne to</TableCell>
-            <TableCell align="right">Estimate</TableCell>
-            <TableCell align="right">Progress</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <Typography variant='h4' mb={3}>Product Backlog items</Typography>
+      <TableContainer component={Paper}>
+        <Table aria-label="collapsible table">
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell>Title</TableCell>
+              <TableCell align="right">Status</TableCell>
+              <TableCell align="right">Assigne to</TableCell>
+              <TableCell align="right">Estimate</TableCell>
+              <TableCell align="right">Progress</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <Row key={row.name} row={row} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }

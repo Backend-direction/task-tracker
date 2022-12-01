@@ -24,7 +24,7 @@ export default function Root() {
       <CssBaseline />
       <AppBar handleDrawerOpen={handleDrawerOpen} open={open}/>
       <MiniDrawer drawerState={open} handleDrawerClose={handleDrawerClose} />
-      <Container component="main" maxWidth='false' sx={{ p: 3, marginTop: '64px' }}>
+      <Container component="main" maxWidth='false' sx={{ p: 3, marginTop: '64px', width: 'calc(100% - 65px)' }}>
         <Outlet />
       </Container>
     </Box>
