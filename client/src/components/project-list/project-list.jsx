@@ -18,7 +18,7 @@ const emptyStyle = {
 }
 
 export default function ProjectList ({ projects, handleClickOpen }) {
-  const getProjectList  = (projects) => {
+  const buildProjectList  = (projects) => {
     return projects.map((project, index) => {
         return (       
           <Grid item xs={2} sm={4} md={4} lg={4} xl={3} key={index}>
@@ -30,7 +30,7 @@ export default function ProjectList ({ projects, handleClickOpen }) {
       })
     }
 
-  const emptyList = () => {
+  const buildEmptyList = () => {
     return (
       <div style={emptyStyle}>There are no projects yet</div>
     )
@@ -43,7 +43,7 @@ export default function ProjectList ({ projects, handleClickOpen }) {
         columns={{ xs: 2, sm: 8, md: 12, lg: 12, xl: 12 }}
       >
         { 
-          projects.length ? getProjectList(projects) : emptyList()
+          projects.length ? buildProjectList(projects) : buildEmptyList()
         }
       <Fab 
         color="primary" 
