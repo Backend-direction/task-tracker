@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useStyles } from './styles';
 
 function createData(
   name,
@@ -120,9 +121,11 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
 ];
 
-export default function ProjectInfoTable() {
+const ProjectInfoTable = () => {
+  const classes = useStyles();
+
   return (
-    <>
+    <Box p={4} className={classes.wrapper}>
       <Typography variant='h4' mb={3}>Product Backlog items</Typography>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
@@ -143,6 +146,8 @@ export default function ProjectInfoTable() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Box>
   );
 }
+
+export default ProjectInfoTable;

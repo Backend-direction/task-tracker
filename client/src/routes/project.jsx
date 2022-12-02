@@ -1,16 +1,11 @@
 import { useState } from 'react'; 
 import { useLoaderData } from "react-router-dom";
 import { 
-  Box, 
   Container, 
-  Avatar,
-  Paper,
-  Grid,
-  Typography,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import buildClient from '../api/buildClient';
-import ProjectInfoTable from '../components/project-info-table/project-info-table';
+import ProjectInfoTable from '../components/project-info-table';
+import ProjectDetailsPlate from '../components/project-details-plate';
 
 export async function loader() {
   const client = buildClient();
@@ -51,92 +46,16 @@ export async function loader() {
   }
 }
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  display: 'flex',
-  alignItems: 'center',
-  minWidth: '345px',
-  height: '56px',
-}));
-
 export default function Project () {
-  const [project, saveProject] = useState(useLoaderData());
-  console.log('pr', project)
+  const [project] = useState(useLoaderData());
+
   return (
     <Container maxWidth='false'>
-      <Grid
-        wrap='wrap'
-        container
-        spacing={{ xs: 2, md: 3, lg: 4 }}
-        sx={{ justifyContent: 'center' }}
-      >
-        <Grid item mb={5}>
-          <img
-            src={`/api/${project.image}`}
-            srcSet={`/api/${project.image}`}
-            width="200"
-            alt={project.name}
-            loading="lazy"
-          />
-        </Grid>
 
-        <Grid 
-          container 
-          item 
-          spacing={{ xs: 2, md: 3, lg: 4 }}
-          columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}
-          my={5}
-          wrap='wrap'
-        >
-          <Grid 
-            item xs={12} sm={12} md={12} lg={6} xl={4}
-          >
-            <Item>
-              <Typography variant="h6" pr={2}>
-                Project title:
-              </Typography>
-              <Typography pr={2}>
-                {project.name} 
-              </Typography> 
-            </Item>
-          </Grid>
-
-          <Grid 
-           item xs={12} sm={12} md={12} lg={6} xl={4}
-          >
-            <Item>
-              <Typography variant="h6" pr={2}>
-                Product owner: 
-              </Typography>  
-              <Typography pr={2}>
-                {project.product_owner}  
-              </Typography>         
-              <Avatar alt="Remy Sharp" sx={{ marginRight: '15px' }} src={`api/v1/${project.product_owner}`} />        
-            </Item>
-          </Grid>
-   
-
-          <Grid 
-            item xs={12} sm={12} md={12} lg={6} xl={4}
-          >
-            <Item>
-              <Typography variant="h6" pr={2}>
-                Team:
-              </Typography>
-              <Typography pr={2}>
-                {project.team}
-              </Typography>
-              <Avatar alt="Remy Sharp" sx={{ marginRight: '15px' }} src={`api/v1/${project.team_photo}`} />
-            </Item>
-          </Grid>
-        </Grid>
-
-      </Grid>
+      <ProjectDetailsPlate project={project} />
 
       <ProjectInfoTable />
+
     </Container >
   )
 }
