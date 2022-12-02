@@ -18,10 +18,10 @@ const emptyStyle = {
 }
 
 export default function ProjectList ({ projects, handleClickOpen }) {
-  const list  = (projects) => {
+  const buildProjectList  = (projects) => {
     return projects.map((project, index) => {
-        return (
-          <Grid item xs={3} sm={4} md={4} key={index}>
+        return (       
+          <Grid item xs={2} sm={4} md={4} lg={4} xl={3} key={index}>
             <ProjectCard 
               project={project}
             />
@@ -30,17 +30,21 @@ export default function ProjectList ({ projects, handleClickOpen }) {
       })
     }
 
-  const emptyList = () => {
+  const buildEmptyList = () => {
     return (
       <div style={emptyStyle}>There are no projects yet</div>
     )
   }
 
   return (
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-      { 
-        projects.length ? list(projects) : emptyList()
-      }
+      <Grid 
+        container 
+        spacing={{ xs: 2, md: 3, lg: 4 }}
+        columns={{ xs: 2, sm: 8, md: 12, lg: 12, xl: 12 }}
+      >
+        { 
+          projects.length ? buildProjectList(projects) : buildEmptyList()
+        }
       <Fab 
         color="primary" 
         aria-label="add" 

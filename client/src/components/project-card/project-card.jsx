@@ -12,12 +12,11 @@ export default function ProjectCard({ project }) {
   const src = project.image ? `/api/${project.image}` : '';
 
   function navigateToProject() {
-    console.log('here',project)
     navigate(`/projects/${project.id}`);
   }
 
   return (
-    <Card sx={{ maxWidth: 345, minWidth: 200 }} onClick={navigateToProject}>
+    <Card sx={{ minWidth: 200 }} onClick={navigateToProject}>
       <CardActionArea>
         <CardPreview src={src} height='140'/>
         <CardContent>
