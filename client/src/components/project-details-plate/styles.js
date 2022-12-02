@@ -1,10 +1,16 @@
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
+import { 
+  Paper,
+} from '@mui/material';
 
-export const useStyles = makeStyles(() => {
-  return {
-    wrapper: {
-      border: '1px solid #c1c1c1',
-      borderRadius: '4px',
-    },
-  };
-});
+export const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  display: 'flex',
+  alignItems: 'center',
+  minWidth: '345px',
+  height: '56px',
+}));
+

@@ -4,8 +4,8 @@ import {
   Typography,
   Box
 } from '@mui/material';
-import { useStyles } from './styles';
-import { Item, createDetailsItems } from './utils';
+import { Item } from './styles';
+import { createDetailsItems } from './utils';
 
 
 const renderDetailsItem = ({ title, content, avatar }) => (
@@ -27,10 +27,9 @@ const renderDetailsItem = ({ title, content, avatar }) => (
 
 const ProjectDetailsPlate = ({ project }) => {
   const detailsItems = createDetailsItems(project);
-  const classes = useStyles(); 
 
   return (
-    <Box px={3} mb={3} className={classes.wrapper}>
+    <Box px={3} mb={3} sx={{ border: '1px solid #c1c1c1', borderRadius: '4px' }}>
       <Typography variant="h4" mt={4} mb={3}>Project information page</Typography>
       <Grid 
         container 

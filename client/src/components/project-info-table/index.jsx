@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { useStyles } from './styles';
 
 function createData(
   name,
@@ -122,10 +121,8 @@ const rows = [
 ];
 
 const ProjectInfoTable = () => {
-  const classes = useStyles();
-
   return (
-    <Box p={4} className={classes.wrapper}>
+    <Box p={4} sx={{ border: '1px solid #c1c1c1', borderRadius: '4px' }}>
       <Typography variant='h4' mb={3}>Product Backlog items</Typography>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
