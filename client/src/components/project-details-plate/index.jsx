@@ -10,7 +10,7 @@ import { createDetailsItems } from './utils';
 
 const renderDetailsItem = ({ title, content, avatar }) => (
   <Grid 
-    item xs={12} sm={12} md={12} lg={6} xl={4}
+    item xs={12} sm={12} md={12} lg={4} xl={4}
     key={title}
   >
     <Item>
@@ -35,6 +35,7 @@ const ProjectDetailsPlate = ({ project }) => {
         container 
         item 
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        rowGap={{xs: 1}}
         columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}
         mb={5}
         wrap='wrap'

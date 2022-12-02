@@ -10,7 +10,6 @@ export const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
   display: 'flex',
   alignItems: 'center',
-  minWidth: '345px',
-  height: '56px',
+  flexWrap: 'wrap'
 }));
 
