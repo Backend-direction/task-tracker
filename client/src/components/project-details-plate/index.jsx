@@ -20,14 +20,14 @@ const renderDetailsItem = ({ title, content, avatar }) => (
       <Typography pr={2}>
         {content} 
       </Typography>
-      <Avatar alt={avatar} sx={{ marginRight: '15px' }} src={`api/v1/${avatar}`} /> 
+      <Avatar alt={avatar} sx={{ marginRight: '15px', width: 56, height: 56 }} src={`/api/${avatar}`} /> 
     </Item>
   </Grid>
 );
 
 const ProjectDetailsPlate = ({ project }) => {
   const detailsItems = createDetailsItems(project);
-
+  console.log(detailsItems)
   return (
     <Box px={3} mb={3} sx={{ border: '1px solid #c1c1c1', borderRadius: '4px' }}>
       <Typography variant="h4" mt={4} mb={3}>Project information page</Typography>
