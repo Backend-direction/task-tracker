@@ -1,5 +1,5 @@
 .update-list__container {
-  width: 30%;
+  flex-grow: 1;
   border: 1px solid #c1c1c1;
   border-radius: 4px;
   padding: 12px;

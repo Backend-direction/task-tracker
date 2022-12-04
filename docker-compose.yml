@@ -28,8 +28,8 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
-      - ./pgdata:/var/lib/postgresql/data/ #windows
-      # - /media/dataDemo/db:/var/lib/postgresql/data:z #linux
+      # - ./pgdata:/var/lib/postgresql/data/ #windows
+      - pg-data:/var/lib/postgresql/data #linux
     
   client:
     stdin_open: true
@@ -47,3 +47,6 @@ services:
       context: ./nginx
     ports:
       - '3050:80'
+
+volumes:
+  pg-data:

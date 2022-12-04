@@ -109,7 +109,7 @@ export default function Dashboard () {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0} style={{ height: 'calc(100% - 49px)' }}>
-          <Box sx={{ display: 'flex', height: '100%' }}>
+          <Box sx={{ display: 'flex', height: '100%', flexFlow: 'row wrap', justifyContent: 'space-around', gap: '15px' }}>
             <ProjectBoard projects={projects}></ProjectBoard>
             <UpdateList></UpdateList>
           </Box>
