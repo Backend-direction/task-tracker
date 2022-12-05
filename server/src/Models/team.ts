@@ -15,7 +15,13 @@ export class Team {
     type: 'varchar',
     length: 128,
   })
-  name: string; 
+  name: string;
+  
+  @Column({
+    type: 'varchar',
+    length: 128,
+  })
+  logo: string; 
 
   @OneToMany(() => Member, (member) => member.team)
   members: Member[];
