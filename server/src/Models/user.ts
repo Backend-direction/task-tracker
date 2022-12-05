@@ -31,6 +31,12 @@ export class User {
   email: string;
   
   @Column({
+    type: 'varchar',
+    length: 256,
+  })
+  photo: string;
+  
+  @Column({
     type: 'boolean',
   })
   status: string;
