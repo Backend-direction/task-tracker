@@ -7,13 +7,13 @@ export const createDetailsItems = (project) => {
     },
     {
       title: 'Product owner',
-      content: project.product_owner,
-      avatar: project.product_owner
+      content: project.productOwner.user.name + project.productOwner.user.surname,
+      avatar: project.productOwner.user.photo
     },
     {
       title: 'Team',
-      content: project.team,
-      avatar: project.team_photo
+      content: project.team.name,
+      avatar: project.team.logo
     }
   ]
 }
