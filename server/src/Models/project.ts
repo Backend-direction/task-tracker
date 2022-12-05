@@ -4,7 +4,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
+import { ProductOwner } from './product-owner';
+import { Team } from './team';
 
 @Entity('projects')
 export class Project {
@@ -34,20 +39,17 @@ export class Project {
     type: 'int',
   })
   rate: number;
-  
-  @Column({
-    type: 'int',
-  })
-  product_owner_id: number;
-  
-  @Column({
-    type: 'int',
-  })
-  team_id: number;
 
   @CreateDateColumn()
   created_at: Date
   
   @UpdateDateColumn()
   updated_at: Date
+
+  @ManyToOne(() => ProductOwner, (productOwner) => productOwner.projects)
+  productOwner: ProductOwner;
+
+  @OneToOne(() => Team)
+  @JoinColumn()
+  team: Team
 }
