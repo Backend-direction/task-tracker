@@ -4,7 +4,9 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
+import { Project } from './project';
 import { User } from './user';
 
 @Entity('product_owners')
@@ -20,4 +22,7 @@ export class ProductOwner {
   @OneToOne(() => User)
   @JoinColumn()
   user: User
+
+  @OneToMany(() => Project, (project) => project.productOwner)
+  projects: Project[];
 }
