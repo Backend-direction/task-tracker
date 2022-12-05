@@ -34,6 +34,16 @@ export class Project {
     type: 'int',
   })
   rate: number;
+  
+  @Column({
+    type: 'int',
+  })
+  product_owner_id: number;
+  
+  @Column({
+    type: 'int',
+  })
+  team_id: number;
 
   @CreateDateColumn()
   created_at: Date
