@@ -13,13 +13,14 @@ const createTeam = async (req: Request, res: Response) => {
   const team = new Team();
 
   team.name = req.body.name;
+  team.logo = req.body.logo;
 
   // should trow error which will be handled at top,
   // or send some specific status 
   try {
     await teamRepository.save(team);
   } catch (error) {
-    throw new Error('Failed to create new user');
+    throw new Error(`Failed to create new user, ${error}`);
   }
 
   res.status(201).send(team);

@@ -68,4 +68,13 @@ const updateOwner = async (req, res) => {
   res.status(200).send(result.raw[0])
 }
 
-export { getOwnerList, createOwner, updateOwner };
+const getProductOwnerById = async (id): Promise<ProductOwner> => {
+  const productOwnersRepository = AppDataSource.getRepository(ProductOwner);
+  const owner = productOwnersRepository.findOne({ where: { id }});
+
+  if(!owner) throw new Error('Product owner was not found'); 
+
+  return owner;
+}
+
+export { getOwnerList, createOwner, updateOwner, getProductOwnerById };

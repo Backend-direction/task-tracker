@@ -16,13 +16,14 @@ const createUser = async (req: Request, res: Response) => {
   user.surname = req.body.surname;
   user.email = req.body.email;
   user.status = req.body.status;
+  user.photo = req.body.photo;
 
   // should trow error which will be handled at top,
   // or send some specific status 
   try {
     await userRepository.save(user);
   } catch (error) {
-    throw new Error('Failed to create new user');
+    throw new Error(`Failed to create new user, ${error}`);
   }
 
   res.status(201).send(user);
