@@ -2,9 +2,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Story } from './story';
 import { Team } from './team';
 import { User } from './user';
 
@@ -19,4 +21,7 @@ export class Member {
 
   @ManyToOne(() => Team, (team) => team.members)
   team: Team;
+
+  @OneToMany(() => Story, (story) => story.member)
+  story: Story[];
 }
