@@ -7,8 +7,10 @@ import {
   ManyToOne,
   OneToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { ProductOwner } from './product-owner';
+import { Story } from './story';
 import { Team } from './team';
 
 @Entity('projects')
@@ -52,4 +54,7 @@ export class Project {
   @OneToOne(() => Team)
   @JoinColumn()
   team: Team
+
+  @OneToMany(() => Story, (story) => story.project)
+  stories: Story[]
 }
