@@ -41,8 +41,20 @@ const createProject = async (req: any, res: Response) => {
   res.status(201).send(project);
 };
 
-const getProjectById = async (req: Request, res: Response) => {
+const getProject = async (req: Request, res: Response) => {
   const id  = +req.params.id;
+  let project: Project;
+
+  try {
+    project = await findProjectById(id);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+
+  res.status(200).send(project);
+}
+
+const findProjectById = async (id: number): Promise<Project> => {
   const projectRepository = AppDataSource.getRepository(Project);
 
   const project = await projectRepository.findOne({
@@ -55,9 +67,9 @@ const getProjectById = async (req: Request, res: Response) => {
     }
   });
 
-  if(!project) throw new Error('Project was not found'); 
+  if(!project) throw new Error('Project was not found');
 
-  res.status(200).send(project);
+  return project;
 }
 
-export { getProjectList, createProject, getProjectById };
+export { getProjectList, createProject, getProject, findProjectById };
