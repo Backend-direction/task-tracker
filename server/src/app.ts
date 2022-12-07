@@ -10,6 +10,7 @@ import { userRouter } from './Routes/users';
 import { teamRouter } from './Routes/teams';
 import { memberRouter } from './Routes/team-members';
 import { productOwnerRouter } from './Routes/product-owner';
+import { storyRouter } from './Routes/stories';
 
 const app = express();
 
@@ -22,10 +23,10 @@ app.use(userRouter);
 app.use(teamRouter);
 app.use(memberRouter);
 app.use(productOwnerRouter);
+app.use(storyRouter);
 
 app.all('*', (req) => {
-  console.log('url', req.url)
-  throw new Error('Route not found');
+  throw new Error('Route not found' + req.url);
 });
 
 export { app };

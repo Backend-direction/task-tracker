@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import AppDataSource from '../db';
-import { Project } from '../Models/project';
 import { Team } from '../Models/team';
 import { Member } from '../Models/team-member';
 import { User } from '../Models/user';
@@ -54,4 +53,14 @@ const addTeamMember = async (req: any, res: Response) => {
   res.status(201).send(member);
 };
 
-export { getMembersByTeamId, addTeamMember };
+const getTeamMemberById = async (id: number): Promise<Member> => {
+  const teamMemberRepository = AppDataSource.getRepository(Member);
+
+  const teamMember = await teamMemberRepository.findOne({ where: { id }});
+
+  if(!teamMember) throw new Error('Team member was not found'); 
+
+  return teamMember;
+}
+
+export { getMembersByTeamId, addTeamMember, getTeamMemberById };
