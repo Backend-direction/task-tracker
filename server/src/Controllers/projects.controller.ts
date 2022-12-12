@@ -55,8 +55,9 @@ const getProject = async (req: Request, res: Response) => {
 }
 
 const findProjectById = async (id: number): Promise<Project> => {
-  const projectRepository = AppDataSource.getRepository(Project);
+  if(!id) throw new Error('Project id is not valid');
 
+  const projectRepository = AppDataSource.getRepository(Project);
   const project = await projectRepository.findOne({
     where: { id },
     relations: {

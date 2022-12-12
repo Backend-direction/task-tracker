@@ -53,9 +53,10 @@ const addTeamMember = async (req: any, res: Response) => {
   res.status(201).send(member);
 };
 
-const getTeamMemberById = async (id: number): Promise<Member> => {
-  const teamMemberRepository = AppDataSource.getRepository(Member);
+const getTeamMemberById = async (id: number): Promise<Member> | null => { 
+  if (!id) throw new Error('Team member id is not valid');
 
+  const teamMemberRepository = AppDataSource.getRepository(Member);
   const teamMember = await teamMemberRepository.findOne({ where: { id }});
 
   if(!teamMember) throw new Error('Team member was not found'); 

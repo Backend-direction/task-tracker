@@ -20,11 +20,16 @@ const createStory = async (req: any, res: Response) => {
 
   try {
     project = await findProjectById(req.body.projectId);
-    teamMember = await getTeamMemberById(req.body.memberId);
   } catch (error) {
-    throw new Error(`Could not find item to create project, ${error}`);
+    res.status(404).send(error.message);
   }
 
+  try {
+    teamMember = await getTeamMemberById(req.body.memberId);
+  } catch {
+    teamMember = null;
+  }
+  
   story.name = req.body.name;
   story.description = req.body.description;
   story.project = project;
@@ -32,10 +37,12 @@ const createStory = async (req: any, res: Response) => {
   story.member = teamMember;
   story.estimate = req.body?.estimate || 0;
 
+  console.log('SAVED!!')
+
   try {
     await storyRepository.save(story);
   } catch (error) {
-    throw new Error(`Failed to create new Story, ${error}`);
+    res.status(500).send('Failed to save the story to db');
   }
 
   res.status(201).send(story);
