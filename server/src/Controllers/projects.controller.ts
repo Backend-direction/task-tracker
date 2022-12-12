@@ -7,9 +7,15 @@ import { getProductOwnerById } from './product-owner.controller';
 import { getTeamById } from './teams.controller';
 
 const getProjectList = async (_req: Request, res: Response) => {
-  const projects = await AppDataSource.query(`SELECT * FROM projects`);
+  let projects: Project[];
+  
+  try {
+    projects = await AppDataSource.query(`SELECT * FROM projects`);
+  } catch (err) {
+    res.status(500).send(err.message)
+  }
 
-  res.send(projects);
+  res.status(200).send(projects);
 };
 
 const createProject = async (req: any, res: Response) => {
