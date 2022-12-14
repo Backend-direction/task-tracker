@@ -37,8 +37,8 @@ export default function CreateProjectDialog({ open, handleClose, addProject }) {
     defaultValues: {
       name: "",
       description: "",
-      productOwner: "",
-      team: "",
+      productOwner: null,
+      team: null,
       image: null
     },
     shouldUnregister: false
@@ -63,8 +63,16 @@ export default function CreateProjectDialog({ open, handleClose, addProject }) {
   );
 
   const { handleSubmit } = methods;
-  const onSubmit = async (data) => {
-    await doRequest(data);
+  const onSubmit = async ({ name, description, productOwner, team, image}) => {
+    const project = {
+      name,
+      description,
+      productOwner: productOwner.id,
+      team: team.id,
+      image
+    }
+
+    await doRequest(project);
   };
 
   return (

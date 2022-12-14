@@ -25,8 +25,8 @@ const createProject = async (req: any, res: Response) => {
   let team: Team;
 
   try {
-    productOwner = await getProductOwnerById(req.body.product_owner_id);
-    team = await getTeamById(req.body.team_id);
+    productOwner = await getProductOwnerById(req.body.productOwner);
+    team = await getTeamById(req.body.team);
   } catch (error) {
     throw new Error(`Could not find item to create project, ${error}`);
   }
@@ -41,7 +41,7 @@ const createProject = async (req: any, res: Response) => {
   try {
     await projectRepository.save(project);
   } catch (error) {
-    throw new Error(`Failed to create new Project, ${error}`);
+    res.status(500).send(`Failed to create new Project, ${error.message}`);
   }
 
   res.status(201).send(project);
