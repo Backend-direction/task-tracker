@@ -42,6 +42,7 @@ const createProject = async (req: any, res: Response) => {
     await projectRepository.save(project);
   } catch (error) {
     res.status(500).send(`Failed to create new Project, ${error.message}`);
+    return;
   }
 
   res.status(201).send(project);

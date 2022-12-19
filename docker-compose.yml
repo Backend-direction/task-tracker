@@ -6,6 +6,7 @@ services:
       context: ./server
     depends_on:
       - app_db
+    restart: always 
     volumes: 
       - /app/node_modules
       - ./server:/app
