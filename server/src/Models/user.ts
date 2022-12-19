@@ -39,7 +39,7 @@ export class User {
   @Column({
     type: 'boolean',
   })
-  status: string;
+  status: boolean;
 
   @CreateDateColumn()
   created_at: Date
